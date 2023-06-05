@@ -11,8 +11,6 @@ public class TestArray {
 		object obj2 = new Person();
 		Person p1 = new Student();
 		Student s1 = new Student();
-		s1.
-		s1.
 		
 		final int b=11;
 		int n = 10;
