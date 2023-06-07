@@ -16,6 +16,8 @@ public class Person implements Serializable {
 	private transient char gender;
 	private transient String password; //transient 를 사용하면 저장이 안됨
 
+	
+	 
 	// 기본생성자
 	/* 녹색*/
 	/** 파랑색 작성위치 여기*/
