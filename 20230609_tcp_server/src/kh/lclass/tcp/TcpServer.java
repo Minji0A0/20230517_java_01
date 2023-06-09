@@ -13,7 +13,15 @@ import java.net.Socket;
 public class TcpServer {
 
 	public void testTcpSerber(int port) {
+		//1. 서버의 포트번호 정황 == > 프로그램의 포트번호
 		ServerSocket ss = null;
+		Socket sc = null;
+		InputStream in = null;
+		OutputStream out = null;
+		BufferedReader br = null;
+		BufferedWriter wr = null;
+		
+		
 		try {
 			// 2 . 서버용 소켓 객체 생성
 			ss = new ServerSocket(port);
@@ -30,13 +38,24 @@ public class TcpServer {
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(out));
 
+			wr.write("반갑습니다.");
+			wr.flush();
+			
+			String receivedMsg = br.readLine();
+			System.out.println("받은메세지 : "+ receivedMsg);
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				// Resource leak : '<unassigned Closeable value>' is never closed
-				if (ss != null)
-					ss.close();
+				if (wr != null) wr.close();
+				if (br != null) br.close();
+				if (out != null) out.close();
+				if (in != null) in.close();
+				if (sc != null) sc.close();
+				if (ss != null) ss.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 
