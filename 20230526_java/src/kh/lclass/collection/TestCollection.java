@@ -31,7 +31,7 @@ public class TestCollection {
 		System.out.println(strStack.get(1));
 		System.out.println(strStack);
 		System.out.println("strStack.peek");
-		System.out.println(strStack.peek());
+		System.out.println(strStack.peek()); //가장 나중에 넣은 데이터가 표시되지만 삭제하진않음
 		System.out.println(strStack);
 		System.out.println("strStack.pop");
 		System.out.println(strStack.pop()); // 가장 나중에 넣은 데이터가 추출됨, 그래서 버리고 남겨두지 않음. 메모리공간을 줄여줌
