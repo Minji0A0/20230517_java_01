@@ -46,10 +46,11 @@ public class TcpClient {
 				System.out.println("메세지>>");
 				sendMsg = stdIn.readLine(); // console에 입력한 문자 읽어들이기
 				System.out.println("####" + sendMsg);
-
+				// server로 문자 전송
 				pw.println(sendMsg);
 				pw.write(sendMsg);
 				pw.flush();
+				//server로 부터 메세지 읽기
 
 				String receivedMsg = br.readLine();
 				System.out.println("서버로부터 받은메시지: " + receivedMsg);

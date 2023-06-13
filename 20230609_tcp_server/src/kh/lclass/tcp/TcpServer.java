@@ -57,12 +57,13 @@ public class TcpServer {
 					System.out.println("받은메시지: " + receivedMsg);
 					wr.write(receivedMsg+" : 메시지 잘 받았음.\n");
 					wr.flush();
+				}while(receivedMsg != null);
+
 				// 방법 2.  while
 //				while ((receivedMsg = br.readLine()) != null) {
 //					System.out.println("받은메시지: " + receivedMsg);
 //					wr.write(receivedMsg+" : 메시지 잘 받았음.\n");
 //					wr.flush();
-				}while(receivedMsg != null);
 			}
 
 		} catch (IOException e) {
