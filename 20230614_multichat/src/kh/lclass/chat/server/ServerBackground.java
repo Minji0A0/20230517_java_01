@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +41,9 @@ public class ServerBackground {
 
 	// 서버 생성 및 설정 -- 클라이언트의 커넥션과 동일 역활 setting
 	public void setting() {
+		//참고용 : 동시접속자로 map에 정보가 
+		Collections.synchronizedMap(mapClients);
+		
 		try {
 //			serverSocket = new ServerSocket(7777);
 			ss = new ServerSocket(7777);
@@ -78,7 +83,7 @@ public class ServerBackground {
 		for (String key : keys) {
 			BufferedWriter wr = mapClients.get(key);
 			try {
-				wr.write(msg);
+				wr.write(key +" : " +msg+"");
 				wr.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -90,7 +95,7 @@ public class ServerBackground {
 	class Client extends Thread { // thread를 사용할떄는 꼭 오버라이드를 사용해야한다.
 		private BufferedReader br;
 		private BufferedWriter bw;
-		private String nickname;
+		private String nickName;
 
 		public Client(Socket socket) {
 			// 초기값 설정
@@ -103,9 +108,9 @@ public class ServerBackground {
 				// server 화면에 표현
 				addclient(nickName);
 				// client outputStream 관리 map에 추가
-				mapClients.put(nickname, bw);
+				mapClients.put(nickName, bw);
 				//client map 모두에게 접속 정보 전달
-				sendMessage(nickname+"님 접속했습니다.");
+				sendMessage(nickName+"님 접속했습니다.\n");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -1,5 +1,6 @@
 package kh.lclass.chat.client;
 
+import java.awt.RenderingHints.Key;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -45,7 +46,7 @@ public class ClientBackground {
 //			while((msg =br.readLine()) != null) { // 사용하지 않음
 			while(br != null) { // server와 입력통로가 끊어지지 않았다면, 계속 반복확인함. // server에서 수신받은 msg
 				String msg = br.readLine();
-				new ClientGUI("닉네임은?").appendMsg(msg);
+				gui.appendMsg(msg);
 			}
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
@@ -54,9 +55,11 @@ public class ClientBackground {
 		}
 	}
 	public void sendMessage(String msg) { 		//server에 전달하기 위해 background에 전달 받은 구문
+		//server에 msg 전달
 		try {
-			bw.write(msg +"\n");
+			bw.write(nickname + ":"+msg+"\n");
 			bw.flush();
+			gui.appendMsg(msg);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
