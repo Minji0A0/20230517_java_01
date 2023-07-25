@@ -32,9 +32,23 @@ public class StudentListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/student/list doGet() 진입");
+		String searchWord = request.getParameter("searchWord");
+		
+		
 		StudentDao dao = new StudentDao();
-		List<StudentVo> result = dao.selectListStudent();
+		List<StudentVo> result = null;
+		if(searchWord != null) {
+//			System.out.println("[ejkim] :" + searchWord);
+			result = dao.selectListStudent(searchWord);
+
+		}else {
+			 result = dao.selectListStudent();
+		}
+//		List<StudentVo> result = dao.selectListStudent();
 		request.setAttribute("studentList",result);
+		if(searchWord != null) {
+			request.setAttribute("searchWord", searchWord);
+		}
 		request.setAttribute("aaa", "그냥속성값테스트해봄");
 		request.setAttribute("bbb", "그냥속성값테스트해봄2");
 		request.getRequestDispatcher("/WEB-INF/view/student/list.jsp").forward(request,response);
