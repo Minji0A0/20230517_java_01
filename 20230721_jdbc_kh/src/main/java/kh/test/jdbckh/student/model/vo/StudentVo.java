@@ -13,7 +13,7 @@ public class StudentVo {
 //	ABSENCE_YN				 VARCHAR2(20)
 //	COACH_PROFESSOR_NO
 	private String studentNo;
-	private String departmentNO;
+	private String departmentNo;
 	private String studentName;
 	private String studentSsn;
 	private String studentAddress;
@@ -23,7 +23,7 @@ public class StudentVo {
 	private String departmentName;
 	@Override
 	public String toString() {
-		return "StudentVo [studentNo=" + studentNo + ", departmentNO=" + departmentNO + ", studentName=" + studentName
+		return "StudentVo [studentNo=" + studentNo + ", departmentNO=" + departmentNo + ", studentName=" + studentName
 				+ ", studentSsn=" + studentSsn + ", studentAddress=" + studentAddress + ", entranceDate=" + entranceDate
 				+ ", absenceYn=" + absenceYn + ", coachProfessorNo=" + coachProfessorNo + ", departmentName="
 				+ departmentName + "]";
@@ -35,10 +35,10 @@ public class StudentVo {
 		this.studentNo = studentNo;
 	}
 	public String getDepartmentNO() {
-		return departmentNO;
+		return departmentNo;
 	}
 	public void setDepartmentNO(String departmentNO) {
-		this.departmentNO = departmentNO;
+		this.departmentNo = departmentNO;
 	}
 	public String getStudentName() {
 		return studentName;
