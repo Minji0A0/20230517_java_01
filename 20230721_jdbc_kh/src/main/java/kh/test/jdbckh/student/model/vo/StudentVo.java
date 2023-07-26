@@ -3,15 +3,15 @@ package kh.test.jdbckh.student.model.vo;
 import java.sql.Date;
 
 public class StudentVo {
-
-//	STUDENT_NO		NOT NULL VARCHAR2(10)
-//	DEPARTMENT_NO	NOT NULL VARCHAR2(10)
-//	STUDENT_NAME	NOT NULL VARCHAR2(40)
-//	STUDENT_SSN				 VARCHAR2(14)
-//	STUDENT_ADDRESS			 DATE
-//	ENTRANCE_DATE			 CHAR(1)
-//	ABSENCE_YN				 VARCHAR2(20)
-//	COACH_PROFESSOR_NO
+//	------------------ -------- ------------- 
+//	STUDENT_NO         NOT NULL VARCHAR2(10)  
+//	DEPARTMENT_NO      NOT NULL VARCHAR2(10)  
+//	STUDENT_NAME       NOT NULL VARCHAR2(40)  
+//	STUDENT_SSN                 VARCHAR2(14)  
+//	STUDENT_ADDRESS             VARCHAR2(200) 
+//	ENTRANCE_DATE               DATE          
+//	ABSENCE_YN                  CHAR(1)       
+//	COACH_PROFESSOR_NO          VARCHAR2(20)  
 	private String studentNo;
 	private String departmentNo;
 	private String studentName;
@@ -20,10 +20,38 @@ public class StudentVo {
 	private Date entranceDate;
 	private String absenceYn;
 	private String coachProfessorNo;
+	
 	private String departmentName;
+	
+
+	public StudentVo() {
+	}
+	public StudentVo(String studentNo, String departmentNo, String studentName, String studentSsn,
+			String studentAddress, String absenceYn, String coachProfessorNo) {
+		this.studentNo = studentNo;
+		this.departmentNo = departmentNo;
+		this.studentName = studentName;
+		this.studentSsn = studentSsn;
+		this.studentAddress = studentAddress;
+		this.absenceYn = absenceYn;
+		this.coachProfessorNo = coachProfessorNo;
+	}
+	public StudentVo(String studentNo, String departmentNo, String studentName, String studentSsn,
+			String studentAddress, Date entranceDate, String absenceYn, String coachProfessorNo,
+			String departmentName) {
+		this.studentNo = studentNo;
+		this.departmentNo = departmentNo;
+		this.studentName = studentName;
+		this.studentSsn = studentSsn;
+		this.studentAddress = studentAddress;
+		this.entranceDate = entranceDate;
+		this.absenceYn = absenceYn;
+		this.coachProfessorNo = coachProfessorNo;
+		this.departmentName = departmentName;
+	}
 	@Override
 	public String toString() {
-		return "StudentVo [studentNo=" + studentNo + ", departmentNO=" + departmentNo + ", studentName=" + studentName
+		return "StudentVo [studentNo=" + studentNo + ", departmentNo=" + departmentNo + ", studentName=" + studentName
 				+ ", studentSsn=" + studentSsn + ", studentAddress=" + studentAddress + ", entranceDate=" + entranceDate
 				+ ", absenceYn=" + absenceYn + ", coachProfessorNo=" + coachProfessorNo + ", departmentName="
 				+ departmentName + "]";
@@ -34,11 +62,11 @@ public class StudentVo {
 	public void setStudentNo(String studentNo) {
 		this.studentNo = studentNo;
 	}
-	public String getDepartmentNO() {
+	public String getDepartmentNo() {
 		return departmentNo;
 	}
-	public void setDepartmentNO(String departmentNO) {
-		this.departmentNo = departmentNO;
+	public void setDepartmentNo(String departmentNo) {
+		this.departmentNo = departmentNo;
 	}
 	public String getStudentName() {
 		return studentName;
@@ -82,10 +110,6 @@ public class StudentVo {
 	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
-	
-	
-	
-	
 	
 	
 }
